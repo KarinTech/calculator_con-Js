@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+    
+       
+    <title>Super Calculator </title>
+</head>
+<body>
+    <html>
+<head>
+<style>
+</style>
+
+<script type="text/javascript">
+   
+
+let numpantalla="0";
+let pantallaconnumero="si"; //Si o No
+let usarpunto="no"; //Si o No
+let numespera=0;
+let operapendiente="";
+let solucion="";
+
+function ingresarnumero(x)
+{
+if(x!=".")
+{
+
+	if(numpantalla=="0" || pantallaconnumero=="si")
+		{
+			document.Calculadora.txtboxnros.value=x;
+			numpantalla=x;
+		}
+	else if(x!=".")
+		{
+			document.Calculadora.txtboxnros.value+=x;
+			numpantalla+=x;
+		}
+}
+
+if(x=="." && usarpunto=="no" && numpantalla=="0")
+	{
+		document.Calculadora.txtboxnros.value="0.";
+		numpantalla=x;
+		usarpunto="si";
+	}	
+else if(x=="." && usarpunto=="no")
+	{
+
+		document.Calculadora.txtboxnros.value +=x;
+		numpantalla +=x;
+		usarpunto="si";
+	}
+else if(x=="." && usarpunto=="si")
+{
+
+}
+	pantallaconnumero="no";
+}
+
+function ingresaoperacion(y)
+{
+if(operapendiente =="")
+{
+
+numespera=document.Calculadora.txtboxnros.value;
+document.Calculadora.txtboxnros.value +=y;
+operapendiente = y;
+pantallaconnumero = "no";
+numpantalla = "";
+usarpunto = "no";
+_
+}
+
+}
+
+function resultado()
+{
+
+if(operapendiente != "") 
+{
+solucion=numespera+operapendiente+numpantalla;
+document.Calculadora.txtboxnros.value=eval(solucion);
+numpantalla=eval(solucion);
+pantallaconnumero="si";
+operapendiente = "";
+usarpunto = "no";
+
+}
+
+}
+
+function raiz()
+{
+
+if(operapendiente == "")
+{
+document.Calculadora.txtboxnros.value=Math.sqrt(numpantalla);
+pantallaconnumero = "no";
+operapendiente = "";
+usarpunto = "no";
+}
+}
+
+function limpiar()
+{
+
+ numpantalla="0";
+ pantallaconnumero="si";
+ usarpunto="no"; 
+ numespera=0;
+ operapendiente="";
+ solucion="";
+document.Calculadora.txtboxnros.value="0";
+}
+
+</script>
+
+
+</head>
+<body>
+
+
+<form name="Calculadora">
+
+<table borde="3">
+
+<tr>
+<td colspan="5">
+<input type="text" name="txtboxnros" value="0" disabled>
+</td></tr>
+
+<tr>
+<td><input type="button" value="1" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="2" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="3" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="+" onclick="ingresaoperacion(this.value)"></td>
+<td><input type="button" value="-" onclick="ingresaoperacion(this.value)"></td>
+</tr>
+
+<tr>
+<td><input type="button" value="4" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="5" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="6" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="*" onclick="ingresaoperacion(this.value)"></td>
+<td><input type="button" value="/" onclick="ingresaoperacion(this.value)"></td>
+</tr>
+
+<tr>
+<td><input type="button" value="7" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="8" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="9" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="^" onclick="ingresaoperacion('**')"></td>
+<td><input type="button" value="√" onclick="raiz()"></td>
+</tr>
+
+<tr>
+<td><input type="button" value="0" onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="." onclick="ingresarnumero(this.value)"></td>
+<td><input type="button" value="C" onclick="limpiar()"></td>
+<td colspan="2"><input type="button" value="      =      " onclick="resultado()"></td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>
+
+    
+</body>
+</html>
